@@ -1,84 +1,43 @@
-import {Box, Button, ButtonText, VStack} from '@gluestack-ui/themed';
+import {Box} from '@gluestack-ui/themed';
 import React from 'react';
 import {
-  Dimensions,
-  ImageBackground,
-  StyleSheet,
-  Text,
+  NativeModules,
+  Platform,
   SafeAreaView,
   StatusBar,
+  StyleSheet,
+  Text,
 } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
+const styles = StyleSheet.create({
+  screenWrapper: {flex: 1, backgroundColor: 'white'},
+  textWraper: {paddingHorizontal: 12},
+  text: {fontSize: hp(4.5), fontWeight: '800'},
+  textWorkout: {fontSize: hp(4.5), fontWeight: '800', color: '#007FFF'},
+});
 
 const HomeScreen = () => {
-  const screenHeight = Dimensions.get('screen').height;
+  const {StatusBarManager} = NativeModules;
+  const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 24 : StatusBarManager.HEIGHT;
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="transparent" translucent />
-      <ImageBackground
-        source={require('../assets/img/main.jpg')}
-        resizeMode="cover"
-        style={styles.image}>
-        <Box
-          h="$80"
-          justifyContent="center"
-          style={{marginTop: screenHeight / 2}}>
-          <VStack space="xs" reversed={false}>
-            <Text style={styles.text}>
-              Stay health even if you stay at home
-            </Text>
-            <Text style={styles.textSmall}>
-              Staying fit to keep you in good condition can now go through
-              mobile apps
-            </Text>
-            <Box style={styles.btnWraper}>
-              <Button
-                size="xl"
-                variant="solid"
-                action="primary"
-                isDisabled={false}
-                isFocusVisible={false}
-                style={styles.btn}>
-                <ButtonText>Enter</ButtonText>
-              </Button>
-            </Box>
-          </VStack>
-        </Box>
-      </ImageBackground>
+    <SafeAreaView
+      style={[styles.screenWrapper, {paddingVertical: STATUSBAR_HEIGHT + 6}]}>
+      <StatusBar
+        backgroundColor="transparent"
+        translucent
+        barStyle="dark-content"
+      />
+      <Box style={styles.textWraper}>
+        <Text style={styles.text}>READY TO</Text>
+        <Text style={styles.textWorkout}>WORKOUT</Text>
+      </Box>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  image: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'white',
-    fontSize: 42,
-    lineHeight: 48,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  textSmall: {
-    color: 'white',
-    fontSize: 18,
-    lineHeight: 24,
-    marginTop: 12,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  btnWraper: {
-    alignItems: 'center',
-    padding: 12,
-  },
-  btn: {
-    width: 196,
-  },
-});
 
 export default HomeScreen;
