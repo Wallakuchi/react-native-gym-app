@@ -1,4 +1,4 @@
-import {Box} from '@gluestack-ui/themed';
+import {Box, Image, View, Text} from '@gluestack-ui/themed';
 import React from 'react';
 import {
   NativeModules,
@@ -6,18 +6,18 @@ import {
   SafeAreaView,
   StatusBar,
   StyleSheet,
-  Text,
 } from 'react-native';
 import {
-  widthPercentageToDP as wp,
+  // widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import ImageSlider from './ImageSlider';
 
 const styles = StyleSheet.create({
-  screenWrapper: {flex: 1, backgroundColor: 'white'},
-  textWraper: {paddingHorizontal: 12},
-  text: {fontSize: hp(4.5), fontWeight: '800'},
-  textWorkout: {fontSize: hp(4.5), fontWeight: '800', color: '#007FFF'},
+  screenWrapper: {flex: 1, backgroundColor: 'white', paddingHorizontal: 12},
+  text: {fontSize: hp(5), fontWeight: '800'},
+  textWorkout: {fontSize: hp(5), fontWeight: '800', color: '#007FFF'},
 });
 
 const HomeScreen = () => {
@@ -32,10 +32,34 @@ const HomeScreen = () => {
         translucent
         barStyle="dark-content"
       />
-      <Box style={styles.textWraper}>
-        <Text style={styles.text}>READY TO</Text>
-        <Text style={styles.textWorkout}>WORKOUT</Text>
+      <Box display="flex" flexDirection="row" justifyContent="space-between">
+        <Box>
+          <Text style={styles.text}>READY TO</Text>
+          <Text style={styles.textWorkout}>WORKOUT</Text>
+        </Box>
+        <Box paddingVertical={hp(1)} columnGap={2}>
+          <View style={{width: hp(6), height: hp(6)}}>
+            <Image
+              source={require('../assets/img/avtar.png')}
+              flex={1}
+              borderRadius={50}
+              alt="avtarImg"
+            />
+          </View>
+          <View
+            display="flex"
+            flexDirection="row"
+            justifyContent="center"
+            marginTop={hp(0.3)}>
+            <Icon name="circle-notifications" size={hp(6)} color="gray" />
+          </View>
+        </Box>
       </Box>
+      {/* <Box>
+        <View>
+          <ImageSlider />
+        </View>
+      </Box> */}
     </SafeAreaView>
   );
 };
