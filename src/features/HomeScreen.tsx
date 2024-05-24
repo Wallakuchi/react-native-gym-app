@@ -13,6 +13,7 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImageSlider from './ImageSlider';
+import BodyParts from './BodyParts';
 
 const styles = StyleSheet.create({
   screenWrapper: {flex: 1, backgroundColor: 'white', paddingHorizontal: 12},
@@ -55,11 +56,16 @@ const HomeScreen = () => {
           </View>
         </Box>
       </Box>
-      {/* <Box>
-        <View>
-          <ImageSlider />
-        </View>
-      </Box> */}
+
+      {/* image slider */}
+      <View marginTop={8} alignItems="center">
+        <ImageSlider />
+      </View>
+
+      {/* body parts  */}
+      <View marginTop="$4" flex={1}>
+        <BodyParts />
+      </View>
     </SafeAreaView>
   );
 };
