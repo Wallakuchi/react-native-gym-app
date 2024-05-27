@@ -5,20 +5,21 @@ import {config} from '@gluestack-ui/config';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LandingScreen from './features/LandingScreen';
+import {Navigation, ParamList} from './types/navigationTypes';
 
 function App(): React.JSX.Element {
-  const Stack = createNativeStackNavigator();
+  const Stack = createNativeStackNavigator<ParamList>();
   return (
     <NavigationContainer>
       <GluestackUIProvider config={config}>
-        <Stack.Navigator>
+        <Stack.Navigator initialRouteName={Navigation.Landing}>
           <Stack.Screen
-            name="Landing"
+            name={Navigation.Landing}
             component={LandingScreen}
             options={{headerShown: false}}
           />
           <Stack.Screen
-            name="Home"
+            name={Navigation.Home}
             component={HomeScreen}
             options={{headerShown: false}}
           />

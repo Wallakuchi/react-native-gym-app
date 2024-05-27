@@ -11,8 +11,9 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import {bodyParts} from '../constants';
+import {Navigation, useScreenNavigation} from '../types/navigationTypes';
 
-export default function BodyParts() {
+export default function Exercises() {
   return (
     <View marginVertical={4}>
       <Text fontSize={hp(3)} fontWeight="$semibold">
@@ -33,9 +34,15 @@ export default function BodyParts() {
 }
 
 const BodyPartCard = ({item}: ListRenderItemInfo<any>) => {
+  const navigation = useScreenNavigation();
+
+  const ExcerciseScreen = () => {
+    navigation.navigate(Navigation.DetailedExcercise);
+  };
+
   return (
     <View>
-      <TouchableOpacity style={styles.card}>
+      <TouchableOpacity style={styles.card} onPress={ExcerciseScreen}>
         <Image
           source={item.image}
           resizeMode="cover"

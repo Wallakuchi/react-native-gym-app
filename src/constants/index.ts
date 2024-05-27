@@ -1,3 +1,6 @@
+export const rapidAPIKey = '8c8db22ea5msh073d7752e6f8a7ep191e3cjsnf019c99a8791';
+export const rapidAPIHost = 'exercisedb.p.rapidapi.com';
+
 export const sliderImages = [
   require('../assets/img/slider3.jpg'),
   require('../assets/img/slider5.jpg'),
