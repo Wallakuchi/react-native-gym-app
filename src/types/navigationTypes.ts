@@ -3,6 +3,7 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import {useNavigation, useRoute} from '@react-navigation/core';
+import {ItemType} from '.';
 
 export enum Navigation {
   Landing = 'Landing',
@@ -11,13 +12,13 @@ export enum Navigation {
 }
 
 type ParamType = {
-  id?: any;
+  item: ItemType;
 };
 
 export type ParamList = {
   [Navigation.Landing]: undefined;
-  [Navigation.Home]: ParamType;
-  [Navigation.DetailedExcercise]: undefined;
+  [Navigation.Home]: undefined;
+  [Navigation.DetailedExcercise]: ParamType;
 };
 
 export const useNavigationRoute = <RouteName extends keyof ParamList>() =>

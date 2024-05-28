@@ -6,6 +6,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LandingScreen from './features/LandingScreen';
 import {Navigation, ParamList} from './types/navigationTypes';
+import DetailedExcerciseScreen from './features/DetailedExcerciseScreen';
 
 function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator<ParamList>();
@@ -21,6 +22,11 @@ function App(): React.JSX.Element {
           <Stack.Screen
             name={Navigation.Home}
             component={HomeScreen}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name={Navigation.DetailedExcercise}
+            component={DetailedExcerciseScreen}
             options={{headerShown: false}}
           />
         </Stack.Navigator>

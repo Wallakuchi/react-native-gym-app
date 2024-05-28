@@ -1,14 +1,17 @@
 import {Box, Image, View, Text} from '@gluestack-ui/themed';
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
-import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImageSlider from './ImageSlider';
-import Exercises from './BodyParts';
+import Exercises from './Exercises';
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={[styles.screenWrapper, {paddingVertical: hp(3)}]}>
+    <SafeAreaView style={styles.screenWrapper}>
       {/* Status Bar */}
       <StatusBar
         backgroundColor="transparent"
@@ -59,7 +62,8 @@ const styles = StyleSheet.create({
   screenWrapper: {
     flex: 1,
     backgroundColor: 'white',
-    paddingHorizontal: 12,
+    paddingHorizontal: wp(3),
+    paddingVertical: hp(3),
   },
 
   text: {

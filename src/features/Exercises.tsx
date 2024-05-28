@@ -12,8 +12,15 @@ import {
 } from 'react-native-responsive-screen';
 import {bodyParts} from '../constants';
 import {Navigation, useScreenNavigation} from '../types/navigationTypes';
+import {ItemType} from '../types';
 
 export default function Exercises() {
+  const navigation = useScreenNavigation();
+
+  const ExcerciseScreen = (item: ItemType) => {
+    navigation.navigate(Navigation.DetailedExcercise, {item});
+  };
+
   return (
     <View marginVertical={4}>
       <Text fontSize={hp(3)} fontWeight="$semibold">
@@ -27,41 +34,39 @@ export default function Exercises() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.contentContainerStyle}
         columnWrapperStyle={styles.columnWrapperStyle}
-        renderItem={BodyPartCard}
+        renderItem={({item, index}) => (
+          <BodyPartCard item={item} index={index} onPress={ExcerciseScreen} />
+        )}
       />
     </View>
   );
 }
 
-const BodyPartCard = ({item}: ListRenderItemInfo<any>) => {
-  const navigation = useScreenNavigation();
-
-  const ExcerciseScreen = () => {
-    navigation.navigate(Navigation.DetailedExcercise);
-  };
-
+const BodyPartCard = ({item, onPress}: ListRenderItemInfo<any>) => {
   return (
     <View>
-      <TouchableOpacity style={styles.card} onPress={ExcerciseScreen}>
-        <Image
-          source={item.image}
-          resizeMode="cover"
-          width={wp(45)}
-          height={wp(48)}
-          alt="img"
-          borderRadius={35}
-        />
-        <Text
-          fontSize={hp(2.3)}
-          color="$white"
-          fontWeight="$semibold"
-          textAlign="center"
-          position="absolute"
-          width={wp(44)}
-          padding={16}>
-          {item.name}
-        </Text>
-      </TouchableOpacity>
+      {item && item !== undefined && (
+        <TouchableOpacity style={styles.card} onPress={() => onPress(item)}>
+          <Image
+            source={item.image}
+            resizeMode="cover"
+            width={wp(45)}
+            height={wp(48)}
+            alt="img"
+            borderRadius={35}
+          />
+          <Text
+            fontSize={hp(2.3)}
+            color="$white"
+            fontWeight="$semibold"
+            textAlign="center"
+            position="absolute"
+            width={wp(44)}
+            padding={16}>
+            {item.name}
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

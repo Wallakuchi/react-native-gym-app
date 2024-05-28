@@ -15,7 +15,7 @@ const LandingScreen = () => {
   const navigation = useScreenNavigation();
 
   const getStartedButton = useCallback(() => {
-    navigation.navigate(Navigation.Home, {id: 1});
+    navigation.navigate(Navigation.Home);
   }, [navigation]);
 
   return (
