@@ -14,21 +14,23 @@ function App(): React.JSX.Element {
     <NavigationContainer>
       <GluestackUIProvider config={config}>
         <Stack.Navigator initialRouteName={Navigation.Landing}>
-          <Stack.Screen
-            name={Navigation.Landing}
-            component={LandingScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name={Navigation.Home}
-            component={HomeScreen}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name={Navigation.DetailedExcercise}
-            component={DetailedExcerciseScreen}
-            options={{headerShown: false}}
-          />
+          <Stack.Group>
+            <Stack.Screen
+              name={Navigation.Landing}
+              component={LandingScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name={Navigation.Home}
+              component={HomeScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name={Navigation.DetailedExcercise}
+              component={DetailedExcerciseScreen}
+              options={{headerShown: false}}
+            />
+          </Stack.Group>
         </Stack.Navigator>
       </GluestackUIProvider>
     </NavigationContainer>

@@ -46,7 +46,9 @@ const BodyPartCard = ({item, onPress}: ListRenderItemInfo<any>) => {
   return (
     <View>
       {item && item !== undefined && (
-        <TouchableOpacity style={styles.card} onPress={() => onPress(item)}>
+        <TouchableOpacity
+          style={styles.card}
+          onPress={() => onPress && onPress(item)}>
           <Image
             source={item.image}
             resizeMode="cover"

@@ -9,10 +9,11 @@ export enum Navigation {
   Landing = 'Landing',
   Home = 'Home',
   DetailedExcercise = 'DetailedExcercise',
+  ExcerciseDetails = 'ExcerciseDetails',
 }
 
 type ParamType = {
-  item: ItemType;
+  item?: ItemType;
 };
 
 export type ParamList = {
