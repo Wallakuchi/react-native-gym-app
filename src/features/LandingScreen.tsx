@@ -1,7 +1,6 @@
+import React, {useCallback} from 'react';
 import {Box, Button, ButtonText, VStack} from '@gluestack-ui/themed';
-import React from 'react';
 import {
-  Dimensions,
   ImageBackground,
   StyleSheet,
   Text,
@@ -10,28 +9,27 @@ import {
 } from 'react-native';
 import Animated, {FadeInDown} from 'react-native-reanimated';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {Navigation, useScreenNavigation} from '../types/navigationTypes';
 
-interface ILandingScreen {
-  navigation: any;
-}
+const LandingScreen = () => {
+  const navigation = useScreenNavigation();
 
-const LandingScreen = ({navigation}: ILandingScreen) => {
-  const screenHeight = Dimensions.get('screen').height;
-
-  const handleOnPress = () => {
-    navigation.navigate('Home');
-  };
+  const getStartedButton = useCallback(() => {
+    navigation.navigate(Navigation.Home);
+  }, [navigation]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <StatusBar backgroundColor="transparent" translucent />
+    <SafeAreaView style={styles.landingScreenContainer}>
+      <StatusBar
+        backgroundColor="transparent"
+        translucent
+        barStyle="light-content"
+      />
       <ImageBackground
         source={require('../assets/img/main.jpg')}
         resizeMode="cover"
-        style={styles.image}>
-        <Box
-          justifyContent="center"
-          style={{marginTop: screenHeight / 2, paddingHorizontal: 12}}>
+        style={styles.backgroundImageStyle}>
+        <Box justifyContent="center" style={styles.ContentOnBgImage}>
           <VStack space="xs" reversed={false}>
             <Animated.View entering={FadeInDown.delay(100).springify()}>
               <Text style={styles.text}>
@@ -51,7 +49,7 @@ const LandingScreen = ({navigation}: ILandingScreen) => {
                   isDisabled={false}
                   isFocusVisible={false}
                   style={styles.btn}
-                  onPress={handleOnPress}>
+                  onPress={getStartedButton}>
                   <ButtonText>Get Started</ButtonText>
                 </Button>
               </Box>
@@ -63,14 +61,23 @@ const LandingScreen = ({navigation}: ILandingScreen) => {
   );
 };
 
+export default LandingScreen;
+
 const styles = StyleSheet.create({
-  container: {
+  landingScreenContainer: {
     flex: 1,
   },
-  image: {
+
+  backgroundImageStyle: {
     flex: 1,
     justifyContent: 'center',
   },
+
+  ContentOnBgImage: {
+    marginTop: hp(50),
+    paddingHorizontal: 12,
+  },
+
   text: {
     color: 'white',
     fontSize: hp(4.5),
@@ -92,5 +99,3 @@ const styles = StyleSheet.create({
     width: 196,
   },
 });
-
-export default LandingScreen;
