@@ -9,6 +9,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import ImageSlider from './ImageSlider';
 import Exercises from './Exercises';
 
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
 const HomeScreen = () => {
   return (
     <SafeAreaView style={styles.screenWrapper}>
@@ -19,7 +23,7 @@ const HomeScreen = () => {
         barStyle="dark-content"
       />
       {/* Screen Top contents */}
-      <Box display="flex" flexDirection="row" justifyContent="space-between">
+      {/* <Box display="flex" flexDirection="row" justifyContent="space-between">
         <Box>
           <Text style={styles.text}>READY TO</Text>
           <Text style={styles.textWorkout}>WORKOUT</Text>
@@ -41,7 +45,7 @@ const HomeScreen = () => {
             <Icon name="circle-notifications" size={hp(6)} color="gray" />
           </View>
         </Box>
-      </Box>
+      </Box> */}
 
       {/* image slider */}
       <View marginTop={8} alignItems="center">
@@ -52,6 +56,11 @@ const HomeScreen = () => {
       <View marginTop="$4" flex={1}>
         <Exercises />
       </View>
+
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Settings" component={SettingsScreen} />
+      </Tab.Navigator>
     </SafeAreaView>
   );
 };

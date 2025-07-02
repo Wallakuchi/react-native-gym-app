@@ -10,9 +10,9 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import {bodyParts} from '../constants';
-import {Navigation, useScreenNavigation} from '../types/navigationTypes';
-import {ItemType} from '../types';
+import {bodyParts} from '../../constants';
+import {Navigation, useScreenNavigation} from '../../types/navigationTypes';
+import {ItemType} from '../../types';
 
 export default function Exercises() {
   const navigation = useScreenNavigation();

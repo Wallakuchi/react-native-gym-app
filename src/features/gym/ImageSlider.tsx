@@ -3,7 +3,7 @@ import Carousel, {
   AdditionalParallaxProps,
   ParallaxImage,
 } from 'react-native-snap-carousel';
-import {sliderImages} from '../constants';
+import {sliderImages} from '../../constants';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,

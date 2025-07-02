@@ -1,19 +1,20 @@
 import React from 'react';
-import HomeScreen from './features/HomeScreen';
+import HomeScreen from './features/gym/HomeScreen';
 import {GluestackUIProvider} from '@gluestack-ui/themed';
 import {config} from '@gluestack-ui/config';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LandingScreen from './features/LandingScreen';
 import {Navigation, ParamList} from './types/navigationTypes';
-import DetailedExcerciseScreen from './features/DetailedExcerciseScreen';
+import DetailedExcerciseScreen from './features/gym/DetailedExcerciseScreen';
+import MainNavigator from './MainNavigator';
 
 function App(): React.JSX.Element {
   const Stack = createNativeStackNavigator<ParamList>();
   return (
     <NavigationContainer>
       <GluestackUIProvider config={config}>
-        <Stack.Navigator initialRouteName={Navigation.Landing}>
+        {/* <Stack.Navigator initialRouteName={Navigation.Landing}>
           <Stack.Group>
             <Stack.Screen
               name={Navigation.Landing}
@@ -31,7 +32,8 @@ function App(): React.JSX.Element {
               options={{headerShown: false}}
             />
           </Stack.Group>
-        </Stack.Navigator>
+        </Stack.Navigator> */}
+        <MainNavigator />
       </GluestackUIProvider>
     </NavigationContainer>
   );

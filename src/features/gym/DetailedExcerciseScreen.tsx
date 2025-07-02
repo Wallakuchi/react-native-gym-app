@@ -8,8 +8,8 @@ import {
 import {
   useNavigationRoute,
   useScreenNavigation,
-} from '../types/navigationTypes';
-import {fetchExcercisesByBodyparts} from '../api/excerciseDB';
+} from '../../types/navigationTypes';
+import {fetchExcercisesByBodyparts} from '../../api/excerciseDB';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import ExcerciseList from './ExcerciseList';
 
